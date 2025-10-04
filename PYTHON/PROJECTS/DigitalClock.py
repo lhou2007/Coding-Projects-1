@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 from PyQt5.QtCore import QTimer, QTime, Qt
 from PyQt5.QtGui import QFont, QFontDatabase
+import os
 
 class DigitalClock(QWidget):
     def __init__(self):
@@ -20,12 +21,15 @@ class DigitalClock(QWidget):
 
         self.time_label.setAlignment(Qt.AlignCenter)
 
-        self.time_label.setStyleSheet("font-size: 150px;"
-                                                             "color: hsl(111, 100%, 50%);")
+        self.time_label.setStyleSheet("font-size: 150px; color: hsl(111, 100%, 50%);")
         self.setStyleSheet("background-color: black;")
 
-        #Use a custom font
-        font_id = QFontDatabase.addApplicationFont("DS-DIGIT.TTF")
+        # Get the absolute path of the font file
+        BASE = os.path.abspath(os.path.dirname(__file__))  # Path to the folder containing the script
+        font_path = os.path.join(BASE, "DS-DIGIT.TTF")  # Full path to the font file
+
+        # Use a custom font
+        font_id = QFontDatabase.addApplicationFont(font_path)
         font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
         my_font = QFont(font_family, 150)
         self.time_label.setFont(my_font)
