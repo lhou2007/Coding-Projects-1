@@ -11,27 +11,72 @@ h1{
     text-align: center;
 }
 
-.navbar ul{
-    list-style-type: none;
-    background-color: hsl(0, 100%, 43%);
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
-}
-.navbar a{
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-    display: block;
-    text-align: center;
-}
-.navbar a:hover{
-    background-color: hsl(350, 85%, 40%);
-}
-.navbar li{
-    float: left;
+/* The navigation menu */
+.navbar {
+  overflow: hidden;
+  background-color: #94070A;
 }
 
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
 
 /* style.css */
 .gallery{
@@ -39,6 +84,7 @@ h1{
     border: 1px solid hsl(0, 0%, 60%);
     margin: 5px;
     width: 200px;
+    position: relative;
 }
 .gallery .description{
     padding: 10px;
@@ -48,10 +94,58 @@ h1{
     border: 1px solid hsl(0, 0%, 20%);
 }
 .gallery img{
+    display: block;
     width: 100%;
     height: auto;
 }
 /* horizontal red line */
 hr.new1 {
   border: 1px solid red;
+}
+
+
+/* Judicial */
+.image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-container:hover .overlay {
+    left: 0;
+    width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 0;
+  height: 100%;
+  transition: 0.5s ease;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start; /* align items horizontally to the left */
+  align-items: left;         /* keep items vertically centered */
+  text-align: left;            /* align text to the left */
+  padding-left: 5px;          /* optional: add some padding from the left edge */
+}
+.overlay-blue {
+    background-color: rgba(3, 27, 187, 0.7);
+}
+.overlay-red {
+    background-color: rgba(216, 31, 41, 0.7);
+}
+
+.gallery:hover .overlay {
+  width: 100%;
+  left: 0;
+}
+
+.text {
+  color: white;
+  font-size: 11px;
+  padding: 10px;
+  width: 80%;
+  white-space: normal;
 }
